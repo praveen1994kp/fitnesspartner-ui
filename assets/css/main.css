@@ -189,6 +189,58 @@ body {
   max-width: 16rem;
 }
 
+.modal-bg {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  place-items: center;
+  z-index: 10010;
+  display: grid;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+.modal-bg.modal-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+div.modal {
+  transform: translateY(-7rem);
+  transition: transform 0.2s ease-in;
+}
+
+.modal-active div.modal {
+  transform: translateY(0rem);
+}
+
+div.modal {
+  position: relative;
+  background-color: #6cc091;
+  min-width: 30%;
+  min-height: 30%;
+  border-radius: 0.5rem;
+}
+
+.modal .user-form {
+  margin: 1rem;
+}
+
+.modal label {
+  color: #ffffff;
+}
+
+#close-icon {
+  color: #ffffff;
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1680px) {
   .container.\31 25\25 {
     width: 100%;

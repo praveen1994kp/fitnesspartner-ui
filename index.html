@@ -18,7 +18,7 @@
           <a href="index.html">Home</a>
           <a href="generic.html">Diet Plan</a>
           <a href="generic.html">Calculators</a>
-          <a href="javascript:openUserModal()">Login</a>
+          <a href="javascript:openUserModal();">Login</a>
         </nav>
         <a href="#navPanel" class="navPanelToggle"
           ><span class="fa fa-bars"></span
@@ -154,11 +154,40 @@
       </div>
     </footer>
 
+    <div id="user-modal" class="modal-bg">
+      <div class="modal">
+        <span id="close-icon" class="icon fa fa-times-circle"></span>
+        <section class="user-form">
+          <form action="#" method="post">
+            <div class="field half first">
+              <label for="email">Email</label>
+              <input name="email" id="email" type="email" placeholder="Email" />
+            </div>
+            <div class="field half">
+              <label for="password">Password</label>
+              <input
+                name="password"
+                id="password"
+                type="password"
+                placeholder="Password"
+              />
+            </div>
+            <ul class="actions">
+              <li>
+                <input value="Sign in" class="button alt" type="submit" />
+              </li>
+            </ul>
+          </form>
+        </section>
+      </div>
+    </div>
+
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/fitnessapp.js"></script>
     <!-- <script src="assets/js/fitnessapp.js"></script> -->
   </body>
 </html>
