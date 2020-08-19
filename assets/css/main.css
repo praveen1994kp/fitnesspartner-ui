@@ -201,7 +201,7 @@ body {
   display: grid;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in, visibility 0.2s ease-in;
 }
 .modal-bg.modal-active {
   visibility: visible;
@@ -239,6 +239,34 @@ div.modal {
   top: 0.6rem;
   right: 0.6rem;
   cursor: pointer;
+}
+
+.user-form-nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  color: #ffffff;
+  padding: 0.4rem;
+  justify-content: space-around;
+  margin: 1.1rem 1.4rem 0 0;
+}
+
+.user-form-nav ul li {
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.user-form-nav ul li:hover {
+  filter: brightness(40%);
+}
+
+.user-form {
+  display: none;
+}
+
+#login-form-container.active,
+#signup-form-container.active {
+  display: block;
 }
 
 @media screen and (max-width: 1680px) {
@@ -2962,6 +2990,7 @@ button:disabled,
 #header .logo strong {
   color: #ffffff;
   font-weight: 600;
+  font-size: 1.5em;
 }
 
 #header a {
