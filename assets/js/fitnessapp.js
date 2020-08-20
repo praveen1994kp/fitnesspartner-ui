@@ -4,23 +4,49 @@ const signUpCtaId = "signup-cta";
 const loginFormContainerId = "login-form-container";
 const signUpFormContainerId = "signup-form-container";
 
-function openUserModal() {
-  let modal = document.getElementById("user-modal");
+function handleBmiSubmit(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const state = {
+    age: formData.get("age"),
+    gender: formData.get("gender"),
+    weight: formData.get("weight"),
+    height: formData.get("height"),
+  };
+  state.bmi = state.weight / (((state.height / 100) * state.height) / 100);
+  console.log(state);
+  sessionStorage.setItem("bmi", state);
+}
+
+function makeElementVisible(id) {
+  let modal = document.getElementById(id);
 
   modal.classList.add(isVisible);
 }
 
-function modalCloseHandler() {
-  let closeBtn = document.getElementById("close-icon");
-  closeBtn.addEventListener("click", function () {
-    let modal = document.getElementById("user-modal");
-    modal.classList.remove(isVisible);
-    resetUserForm();
+function openUserModal() {
+  makeElementVisible("user-modal");
+}
+
+function openCalculatorModal() {
+  makeElementVisible("calculator-modal");
+}
+
+function modalCloseHandler(modalId) {
+  let closebtnicons = [];
+  closebtnicons.push(document.getElementById("close-icon"));
+  closebtnicons.push(document.getElementById("close-icon-calc"));
+  closebtnicons.forEach(function (closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      let modal = document.getElementById(modalId);
+      modal.classList.remove(isVisible);
+      resetUserForm();
+    });
   });
 
   document.addEventListener("click", (e) => {
     if (e.target == document.querySelector(".modal-bg.modal-active")) {
-      let modal = document.getElementById("user-modal");
+      let modal = document.getElementById(modalId);
       modal.classList.remove(isVisible);
       resetUserForm();
     }
@@ -28,14 +54,15 @@ function modalCloseHandler() {
 
   document.addEventListener("keyup", (e) => {
     if (e.key == "Escape" && document.querySelector(".modal-bg.modal-active")) {
-      let modal = document.getElementById("user-modal");
+      let modal = document.getElementById(modalId);
       modal.classList.remove(isVisible);
       resetUserForm();
     }
   });
 }
 
-modalCloseHandler();
+modalCloseHandler("user-modal");
+modalCloseHandler("calculator-modal");
 
 function setupFormNavActions(ctaId, formId, others) {
   let selectorEl = document.getElementById(ctaId);

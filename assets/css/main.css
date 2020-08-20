@@ -225,7 +225,8 @@ div.modal {
   border-radius: 0.5rem;
 }
 
-.modal .user-form {
+.modal .user-form,
+.modal #bmi-form {
   margin: 1rem;
 }
 
@@ -233,12 +234,27 @@ div.modal {
   color: #ffffff;
 }
 
-#close-icon {
+.white-text {
+  color: #ffffff !important;
+}
+
+#close-icon,
+#close-icon-calc {
   color: #ffffff;
   position: absolute;
   top: 0.6rem;
   right: 0.6rem;
   cursor: pointer;
+}
+
+.modal .header h4 {
+  text-align: center;
+  padding: 0.4em;
+  color: inherit;
+}
+
+.modal {
+  color: #ffffff;
 }
 
 .user-form-nav ul {
@@ -267,6 +283,20 @@ div.modal {
 #login-form-container.active,
 #signup-form-container.active {
   display: block;
+}
+
+form input[type="radio"] {
+  margin-left: 1.5rem;
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 
 @media screen and (max-width: 1680px) {
@@ -2216,6 +2246,7 @@ label {
   margin: 0 0 1em 0;
 }
 
+input[type="number"],
 input[type="text"],
 input[type="password"],
 input[type="email"],

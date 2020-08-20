@@ -17,7 +17,7 @@
         <nav id="nav">
           <a href="index.html">Home</a>
           <a href="generic.html">Diet Plan</a>
-          <a href="generic.html">Calculators</a>
+          <a href="javascript:openCalculatorModal();">Calculators</a>
           <a href="javascript:openUserModal();">Login</a>
         </nav>
         <a href="#navPanel" class="navPanelToggle"
@@ -116,6 +116,53 @@
         </div>
       </div>
     </section>
+
+    <div id="calculator-modal" class="modal-bg">
+      <div class="modal">
+        <span id="close-icon-calc" class="icon fa fa-times-circle"></span>
+        <section class="header"><h4>BMI Calculator</h4></section>
+        <section id="bmi-form">
+          <form action="#" method="post" onsubmit="handleBmiSubmit(event)">
+            <div class="field">
+              <label for="age">Age</label>
+              <input name="age" id="age" type="number" placeholder="Age" />
+            </div>
+            <div class="field">
+              <label for="male">Gender</label>
+              <div>
+                <input type="radio" id="male" name="gender" value="male" />
+                <label class="white-text" for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female" />
+                <label class="white-text" for="female">Female</label>
+              </div>
+            </div>
+            <div class="field half">
+              <label for="weight">Weight(kg)</label>
+              <input
+                name="weight"
+                id="weight"
+                type="number"
+                placeholder="Weight"
+              />
+            </div>
+            <div class="field half">
+              <label for="height">Height(cm)</label>
+              <input
+                name="height"
+                id="height"
+                type="number"
+                placeholder="Height"
+              />
+            </div>
+            <ul class="actions">
+              <li>
+                <input value="Calculate" class="button alt" type="submit" />
+              </li>
+            </ul>
+          </form>
+        </section>
+      </div>
+    </div>
 
     <div id="user-modal" class="modal-bg">
       <div class="modal">
