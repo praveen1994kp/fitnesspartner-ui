@@ -185,6 +185,24 @@
               />
             </div>
             <div class="field half">
+              <label for="firstname">First Name</label>
+              <input
+                name="firstname"
+                id="firstname"
+                type="text"
+                placeholder="First Name"
+              />
+            </div>
+            <div class="field half">
+              <label for="lastname">Last Name</label>
+              <input
+                name="lastname"
+                id="lastname"
+                type="text"
+                placeholder="Last Name"
+              />
+            </div>
+            <div class="field half">
               <label for="signuppassword">Password</label>
               <input
                 name="signuppassword"
@@ -210,7 +228,7 @@
           </form>
         </section>
         <section id="login-form-container" class="user-form active">
-          <form action="#" method="post">
+          <form action="#" method="post" onsubmit="handleLogin(event)">
             <div class="field half first">
               <label for="email">Email</label>
               <input name="email" id="email" type="email" placeholder="Email" />

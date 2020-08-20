@@ -3,6 +3,34 @@ const loginCtaId = "login-cta";
 const signUpCtaId = "signup-cta";
 const loginFormContainerId = "login-form-container";
 const signUpFormContainerId = "signup-form-container";
+const LOGIN_API_URL = "http://localhost:8080/user/login";
+
+function sendLoginRequest(loginInfo) {
+  return fetch(LOGIN_API_URL, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginInfo),
+  });
+}
+
+async function handleLogin(event) {
+  event.preventDefault();
+  const formData = new FormData(event.target);
+  const loginInfo = {
+    email: formData.get("email"),
+    password: formData.get("password"),
+  };
+  const loginResponse = await sendLoginRequest(loginInfo);
+  if (loginResponse.status === 200) {
+    const data = await loginResponse.json();
+    sessionStorage.setItem("user", data);
+  } else {
+    //TODO: handle login failure
+  }
+}
 
 function handleBmiSubmit(event) {
   event.preventDefault();
