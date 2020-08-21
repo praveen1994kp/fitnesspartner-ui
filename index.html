@@ -17,8 +17,19 @@
         <nav id="nav">
           <a href="index.html">Home</a>
           <a href="generic.html">Diet Plan</a>
-          <a href="javascript:openCalculatorModal();">Calculators</a>
-          <a href="javascript:openUserModal();">Login</a>
+          <a
+            data-target="calculator-modal"
+            onclick="openModal(event)"
+            href="javascript:void(0);"
+            >Calculators</a
+          >
+          <a
+            data-target="user-modal"
+            onclick="openModal(event)"
+            href="javascript:void(0);"
+            id="session-info"
+            >Login</a
+          >
         </nav>
         <a href="#navPanel" class="navPanelToggle"
           ><span class="fa fa-bars"></span
@@ -130,9 +141,9 @@
             <div class="field">
               <label for="male">Gender</label>
               <div>
-                <input type="radio" id="male" name="gender" value="male" />
+                <input type="radio" id="male" name="gender" value="m" />
                 <label class="white-text" for="male">Male</label>
-                <input type="radio" id="female" name="gender" value="female" />
+                <input type="radio" id="female" name="gender" value="f" />
                 <label class="white-text" for="female">Female</label>
               </div>
             </div>
@@ -174,7 +185,7 @@
           </ul>
         </section>
         <section id="signup-form-container" class="user-form">
-          <form action="#" method="post">
+          <form action="#" method="post" onsubmit="handleSignup(event)">
             <div class="field">
               <label for="signupemail">Email</label>
               <input
@@ -258,6 +269,9 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/fitnessapp.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/tabnav.js"></script>
     <!-- <script src="assets/js/fitnessapp.js"></script> -->
   </body>
 </html>
