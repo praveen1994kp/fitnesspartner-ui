@@ -84,4 +84,6 @@ async function handleBmiSubmit(event) {
   } else {
     updateSessionInfo(state);
   }
+
+  navigateTo("/diet-plan.html");
 }

@@ -16,16 +16,6 @@ function setupFormNavActions(ctaId, formId, others) {
   });
 }
 
-function resetUserForm() {
-  const signUpActive = document
-    .getElementById(signUpFormContainerId)
-    .classList.contains("active");
-  if (signUpActive) {
-    document.getElementById(signUpFormContainerId).remove("active");
-    document.getElementById(loginFormContainerId).classList.add("active");
-  }
-}
-
 function userNavBarActions() {
   setupFormNavActions(
     loginCtaId,

@@ -6,6 +6,18 @@ function makeElementVisible(id) {
   modal.classList.add(isVisible);
 }
 
+function resetUserForm() {
+  const signUpActive =
+    document.getElementById("signup-form-container") &&
+    document
+      .getElementById("signup-form-container")
+      .classList.contains("active");
+  if (signUpActive) {
+    document.getElementById("signup-form-container").remove("active");
+    document.getElementById("login-form-container").classList.add("active");
+  }
+}
+
 function openModal(event) {
   const targetModalId = event.target.dataset.target;
   makeElementVisible(targetModalId);
