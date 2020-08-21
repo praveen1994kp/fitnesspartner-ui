@@ -79,8 +79,9 @@ async function handleBmiSubmit(event) {
     if (updatedDataFromApi.status === 200) {
       const data = await updatedDataFromApi.json();
       data.loggedIn = true;
-      state = data;
+      updateSessionInfo(data);
     }
+  } else {
+    updateSessionInfo(state);
   }
-  updateSessionInfo(state);
 }
