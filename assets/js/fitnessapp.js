@@ -28,13 +28,22 @@ async function handleLogin(event) {
     email: formData.get("email"),
     password: formData.get("password"),
   };
+  const sessionInfo = getSessionInfo();
   const loginResponse = await sendLoginRequest(loginInfo);
   if (loginResponse.status === 200) {
     const data = await loginResponse.json();
-    data.loggedIn = true;
-    updateSessionInfo(data);
-    refreshSessionInfo();
-    closeModal();
+    if (sessionInfo && sessionInfo.weightInKg && sessionInfo.heightInCm) {
+      updateUserDataToBackend(sessionInfo, data.email);
+      closeModal();
+      navigateTo("/diet-plan.html");
+      refreshSessionInfo();
+    } else {
+      data.loggedIn = true;
+      updateSessionInfo(data);
+      refreshSessionInfo();
+      closeModal();
+      navigateTo("/diet-plan.html");
+    }
   } else {
     //TODO: handle login failure
   }
@@ -52,12 +61,31 @@ async function handleSignup(event) {
   const signUpResponse = await sendSignUpRequest(loginInfo);
   if (signUpResponse.status === 200) {
     const data = await signUpResponse.json();
-    data.loggedIn = true;
-    updateSessionInfo(data);
-    refreshSessionInfo();
-    closeModal();
+    sessionInfo = getSessionInfo();
+    if (sessionInfo && sessionInfo.weightInKg && sessionInfo.heightInCm) {
+      updateUserDataToBackend(sessionInfo, data.email);
+      closeModal();
+      navigateTo("/diet-plan.html");
+      refreshSessionInfo();
+    } else {
+      data.loggedIn = true;
+      updateSessionInfo(data);
+      refreshSessionInfo();
+      closeModal();
+      navigateTo("/diet-plan.html");
+    }
   } else {
     //TODO: handle login failure
+  }
+}
+
+async function updateUserDataToBackend(state, email) {
+  const updatedDataFromApi = await updateUserData(state, email);
+
+  if (updatedDataFromApi.status === 200) {
+    const data = await updatedDataFromApi.json();
+    data.loggedIn = true;
+    updateSessionInfo(data);
   }
 }
 
@@ -73,14 +101,8 @@ async function handleBmiSubmit(event) {
   state.bmi =
     state.weightInKg / (((state.heightInCm / 100) * state.heightInCm) / 100);
   const sessionInfo = getSessionInfo();
-  if (sessionInfo.loggedIn) {
-    const updatedDataFromApi = await updateUserData(state, sessionInfo.email);
-
-    if (updatedDataFromApi.status === 200) {
-      const data = await updatedDataFromApi.json();
-      data.loggedIn = true;
-      updateSessionInfo(data);
-    }
+  if (sessionInfo && sessionInfo.loggedIn) {
+    updateUserDataToBackend(state, sessionInfo.email);
   } else {
     updateSessionInfo(state);
   }
