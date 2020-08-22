@@ -299,6 +299,11 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 
+form .actions .error {
+  display: none;
+  color: #d74062;
+}
+
 /* Diet Page */
 #main-stats {
   margin-top: 3rem;
@@ -2774,10 +2779,6 @@ table tbody tr {
   border: solid 1px #dbdbdb;
   border-left: 0;
   border-right: 0;
-}
-
-table tbody tr:nth-child(2n + 1) {
-  background-color: rgba(144, 144, 144, 0.075);
 }
 
 table td {

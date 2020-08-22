@@ -10,7 +10,8 @@ function clearSessionInfo() {
 
 function refreshSessionInfo() {
   let sessionInfoEl = document.getElementById("session-info");
-  const sessionInfo = getSessionInfo().loggedIn ? "Logout" : "Login";
+  const userData = getSessionInfo();
+  const sessionInfo = userData && userData.loggedIn ? "Logout" : "Login";
   sessionInfoEl.innerHTML = sessionInfo;
 }
 
@@ -50,8 +51,12 @@ async function handleLogin(event) {
       closeModal();
       navigateTo("/diet-plan.html");
     }
+  } else if (loginResponse.status === 400) {
+    document.getElementById("login-form-error").style.display = "inline-block";
   } else {
-    //TODO: handle login failure
+    const errorDisplay = document.getElementById("login-form-error");
+    errorDisplay.innerHTML = "Something went wrong";
+    errorDisplay.style.display = "inline-block";
   }
 }
 
@@ -81,7 +86,7 @@ async function handleSignup(event) {
       navigateTo("/diet-plan.html");
     }
   } else {
-    //TODO: handle login failure
+    document.getElementById("signup-form-error").style.display = "inline-block";
   }
 }
 
