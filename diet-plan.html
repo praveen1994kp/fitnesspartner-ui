@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--
+	Projection by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+  <head>
+    <title>Fitness Partner</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body class="subpage">
+    <!-- Header -->
+    <header id="header">
+      <div class="inner">
+        <a href="index.html" class="logo"
+          ><strong>Fitness Partner</strong>- Your Personal Companion</a
+        >
+        <nav id="nav">
+		  <a href="index.html">Home</a>
+		  <a
+            data-target="user-modal"
+            onclick="openModal(event)"
+            href="javascript:void(0);"
+            id="session-info"
+            >Login</a
+          >
+        </nav>
+        <a href="#navPanel" class="navPanelToggle"
+          ><span class="fa fa-bars"></span
+        ></a>
+      </div>
+    </header>
+
+    <!-- Three -->
+    <section id="main-stats">
+		<a id="join-us" data-target="user-modal"
+		onclick="openModal(event)"
+		href="javascript:void(0);">Get personalized recommendations</a>
+		<section id="stats-display" class="stats-display">
+		<span id="edit-icon"
+		data-target="calculator-modal"
+		onclick="openModal(event)" class="fa fa-pencil-square-o"></span>
+      <table>
+        <tr>
+          <th>Weight(kg)</th>
+		  <td id="weightValue">77</td>
+		  <tr>
+          <th>Height(kg)</th>
+		  <td id="heightValue">177</td>
+		</tr>
+		<tr>
+          <th>BMI</th>
+		  <td id="bmiValue">21</td>
+		</tr>
+        </tr>
+	  </table>
+	</section>
+    </section>
+    <section id="three" class="wrapper">
+      <div class="inner">
+        <header class="align-center">
+          <h2>Diet Plan</h2>
+          <p>Your personalized diet recommendations</p>
+        </header>
+        <div class="image round left">
+          <img src="images/diet.jpg" alt="Diet" />
+        </div>
+        <p>
+			How does fresh spinach juice everyday help with weight loss?
+			Spinach is a low-calorie vegetable, which is quite beneficial for people trying to reduce their calorie intake for weight loss. The winter superfood is also an excellent source of dietary fibre, which improves satiety and promotes a healthy digestive tract. Moreover, spinach contains a biochemical substance called thylakoids, which may reduce body fat and weight.
+			
+			Studies suggest that taking thylakoid-rich spinach extract may lead to weight loss by suppressing appetite. Thylakoids found in spinach increases the levels of hormones like glucagon-like peptide-1 (GLP-1), which reduces appetite while reducing the levels of hunger hormone ghrelin. Hence, it is suggested that drinking spinach juice before eating may contribute to weight loss by reducing your calorie intake.
+        </p>
+
+        <div class="image round right">
+          <img src="images/workout.jpg" alt="Lifting Weight" />
+        </div>
+        <p>
+			Weight lifting isn’t just about bulking up and building muscle mass, the experts say. Its benefits include improved posture, better sleep, gaining bone density, maintaining weight loss, boosting metabolism, lowering inflammation and staving off chronic disease, among a laundry list of positives.
+
+			Here’s a look at reasons why resistance training is incredible for your health.
+			
+			It keeps your bones strong and healthy
+			Your bones need to stay challenged, just like your brain needs exercise to stay sharp. After about age 30, you start to lose bone density at a small percentage each year. Keep in mind, women make up 80 per cent of osteoporosis cases as they lose bone mass.
+        </p>
+      </div>
+	</section>
+	<div id="calculator-modal" class="modal-bg">
+		<div class="modal">
+		  <span id="close-icon-calc" class="icon fa fa-times-circle"></span>
+		  <section class="header"><h4>BMI Calculator</h4></section>
+		  <section id="bmi-form">
+			<form action="#" method="post" onsubmit="handleBmiSubmit(event)">
+			  <div class="field">
+				<label for="age">Age</label>
+				<input name="age" id="age" type="number" placeholder="Age" />
+			  </div>
+			  <div class="field">
+				<label for="male">Gender</label>
+				<div>
+				  <input type="radio" id="male" name="gender" value="m" />
+				  <label class="white-text" for="male">Male</label>
+				  <input type="radio" id="female" name="gender" value="f" />
+				  <label class="white-text" for="female">Female</label>
+				</div>
+			  </div>
+			  <div class="field half">
+				<label for="weight">Weight(kg)</label>
+				<input
+				  name="weight"
+				  id="weight"
+				  type="number"
+				  placeholder="Weight"
+				/>
+			  </div>
+			  <div class="field half">
+				<label for="height">Height(cm)</label>
+				<input
+				  name="height"
+				  id="height"
+				  type="number"
+				  placeholder="Height"
+				/>
+			  </div>
+			  <ul class="actions">
+				<li>
+				  <input value="Calculate" class="button alt" type="submit" />
+				</li>
+			  </ul>
+			</form>
+		  </section>
+		</div>
+	  </div>
+	  <div id="user-modal" class="modal-bg">
+		<div class="modal">
+		  <span id="close-icon" class="icon fa fa-times-circle"></span>
+		  <section class="user-form-nav">
+			<ul>
+			  <li id="login-cta">Login</li>
+			  <li id="signup-cta">Sign up</li>
+			</ul>
+		  </section>
+		  <section id="signup-form-container" class="user-form">
+			<form action="#" method="post" onsubmit="handleSignup(event)">
+			  <div class="field">
+				<label for="signupemail">Email</label>
+				<input
+				  name="signupemail"
+				  id="signupemail"
+				  type="email"
+				  placeholder="Email"
+				/>
+			  </div>
+			  <div class="field half">
+				<label for="firstname">First Name</label>
+				<input
+				  name="firstname"
+				  id="firstname"
+				  type="text"
+				  placeholder="First Name"
+				/>
+			  </div>
+			  <div class="field half">
+				<label for="lastname">Last Name</label>
+				<input
+				  name="lastname"
+				  id="lastname"
+				  type="text"
+				  placeholder="Last Name"
+				/>
+			  </div>
+			  <div class="field half">
+				<label for="signuppassword">Password</label>
+				<input
+				  name="signuppassword"
+				  id="signuppassword"
+				  type="password"
+				  placeholder="Password"
+				/>
+			  </div>
+			  <div class="field half">
+				<label for="confirmpassword">Confirm Password</label>
+				<input
+				  name="confirmpassword"
+				  id="confirmpassword"
+				  type="password"
+				  placeholder="Confirm Password"
+				/>
+			  </div>
+			  <ul class="actions">
+				<li>
+				  <input value="Sign Up" class="button alt" type="submit" />
+				</li>
+				<li id="signup-form-error" class="error">
+				  Something went wrong
+				</li>
+			  </ul>
+			</form>
+		  </section>
+		  <section id="login-form-container" class="user-form active">
+			<form action="#" method="post" onsubmit="handleLogin(event)">
+			  <div class="field half first">
+				<label for="email">Email</label>
+				<input name="email" id="email" type="email" placeholder="Email" />
+			  </div>
+			  <div class="field half">
+				<label for="password">Password</label>
+				<input
+				  name="password"
+				  id="password"
+				  type="password"
+				  placeholder="Password"
+				/>
+			  </div>
+			  <ul class="actions">
+				<li>
+				  <input value="Sign in" class="button alt" type="submit" />
+				</li>
+				<li id="login-form-error" class="error">
+				  Incorrect username/password
+				</li>
+			  </ul>
+			</form>
+		  </section>
+		</div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/fitnessapp.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/tabnav.js"></script>
+	<script src="assets/js/dietplan.js"></script>
+  </body>
+</html>

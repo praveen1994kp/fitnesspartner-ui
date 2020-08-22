@@ -16,9 +16,20 @@
         >
         <nav id="nav">
           <a href="index.html">Home</a>
-          <a href="generic.html">Diet Plan</a>
-          <a href="generic.html">Calculators</a>
-          <a href="javascript:openUserModal()">Login</a>
+          <a href="diet-plan.html">Diet Plan</a>
+          <a
+            data-target="calculator-modal"
+            onclick="openModal(event)"
+            href="javascript:void(0);"
+            >Calculators</a
+          >
+          <a
+            data-target="user-modal"
+            onclick="openModal(event)"
+            href="javascript:void(0);"
+            id="session-info"
+            >Login</a
+          >
         </nav>
         <a href="#navPanel" class="navPanelToggle"
           ><span class="fa fa-bars"></span
@@ -60,7 +71,7 @@
         </div>
 
         <footer>
-          <a href="#" class="button">Get Started</a>
+          <a href="/diet-plan.html" class="button">Get Started</a>
         </footer>
       </div>
     </section>
@@ -88,7 +99,7 @@
               If you think lifting is dangerous, try being weak. ...
             </p>
             <footer>
-              <a href="#" class="button">Learn More</a>
+              <a href="/diet-plan.html" class="button">Learn More</a>
             </footer>
           </article>
           <article>
@@ -110,55 +121,163 @@
               Eat Healthy, Stay Healthy!
             </p>
             <footer>
-              <a href="#" class="button">Learn More</a>
+              <a href="/diet-plan.html" class="button">Learn More</a>
             </footer>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="footer">
-      <div class="inner">
-        <h3>Get in touch</h3>
-
-        <form action="#" method="post">
-          <div class="field half first">
-            <label for="name">Name</label>
-            <input name="name" id="name" type="text" placeholder="Name" />
-          </div>
-          <div class="field half">
-            <label for="email">Email</label>
-            <input name="email" id="email" type="email" placeholder="Email" />
-          </div>
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea
-              name="message"
-              id="message"
-              rows="6"
-              placeholder="Message"
-            ></textarea>
-          </div>
-          <ul class="actions">
-            <li>
-              <input value="Send Message" class="button alt" type="submit" />
-            </li>
-          </ul>
-        </form>
-
-        <div class="copyright">
-          &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>.
-          Images: <a href="https://unsplash.com">Unsplash</a>.
-        </div>
+    <div id="calculator-modal" class="modal-bg">
+      <div class="modal">
+        <span id="close-icon-calc" class="icon fa fa-times-circle"></span>
+        <section class="header"><h4>BMI Calculator</h4></section>
+        <section id="bmi-form">
+          <form action="#" method="post" onsubmit="handleBmiSubmit(event)">
+            <div class="field">
+              <label for="age">Age</label>
+              <input name="age" id="age" type="number" placeholder="Age" />
+            </div>
+            <div class="field">
+              <label for="male">Gender</label>
+              <div>
+                <input type="radio" id="male" name="gender" value="m" />
+                <label class="white-text" for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="f" />
+                <label class="white-text" for="female">Female</label>
+              </div>
+            </div>
+            <div class="field half">
+              <label for="weight">Weight(kg)</label>
+              <input
+                name="weight"
+                id="weight"
+                type="number"
+                placeholder="Weight"
+              />
+            </div>
+            <div class="field half">
+              <label for="height">Height(cm)</label>
+              <input
+                name="height"
+                id="height"
+                type="number"
+                placeholder="Height"
+              />
+            </div>
+            <ul class="actions">
+              <li>
+                <input value="Calculate" class="button alt" type="submit" />
+              </li>
+            </ul>
+          </form>
+        </section>
       </div>
-    </footer>
+    </div>
+
+    <div id="user-modal" class="modal-bg">
+      <div class="modal">
+        <span id="close-icon" class="icon fa fa-times-circle"></span>
+        <section class="user-form-nav">
+          <ul>
+            <li id="login-cta">Login</li>
+            <li id="signup-cta">Sign up</li>
+          </ul>
+        </section>
+        <section id="signup-form-container" class="user-form">
+          <form action="#" method="post" onsubmit="handleSignup(event)">
+            <div class="field">
+              <label for="signupemail">Email</label>
+              <input
+                name="signupemail"
+                id="signupemail"
+                type="email"
+                placeholder="Email"
+              />
+            </div>
+            <div class="field half">
+              <label for="firstname">First Name</label>
+              <input
+                name="firstname"
+                id="firstname"
+                type="text"
+                placeholder="First Name"
+              />
+            </div>
+            <div class="field half">
+              <label for="lastname">Last Name</label>
+              <input
+                name="lastname"
+                id="lastname"
+                type="text"
+                placeholder="Last Name"
+              />
+            </div>
+            <div class="field half">
+              <label for="signuppassword">Password</label>
+              <input
+                name="signuppassword"
+                id="signuppassword"
+                type="password"
+                placeholder="Password"
+              />
+            </div>
+            <div class="field half">
+              <label for="confirmpassword">Confirm Password</label>
+              <input
+                name="confirmpassword"
+                id="confirmpassword"
+                type="password"
+                placeholder="Confirm Password"
+              />
+            </div>
+            <ul class="actions">
+              <li>
+                <input value="Sign Up" class="button alt" type="submit" />
+              </li>
+              <li id="signup-form-error" class="error">
+                Something went wrong
+              </li>
+            </ul>
+          </form>
+        </section>
+        <section id="login-form-container" class="user-form active">
+          <form action="#" method="post" onsubmit="handleLogin(event)">
+            <div class="field half first">
+              <label for="email">Email</label>
+              <input name="email" id="email" type="email" placeholder="Email" />
+            </div>
+            <div class="field half">
+              <label for="password">Password</label>
+              <input
+                name="password"
+                id="password"
+                type="password"
+                placeholder="Password"
+              />
+            </div>
+            <ul class="actions">
+              <li>
+                <input value="Sign in" class="button alt" type="submit" />
+              </li>
+              <li id="login-form-error" class="error">
+                Incorrect username/password
+              </li>
+            </ul>
+          </form>
+        </section>
+      </div>
+    </div>
 
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/fitnessapp.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/tabnav.js"></script>
     <!-- <script src="assets/js/fitnessapp.js"></script> -->
   </body>
 </html>
