@@ -1,5 +1,11 @@
 function navigateTo(path = "/") {
-  window.location.href = path;
+  setTimeout(function () {
+    window.location.href = path;
+  }, 300);
+}
+
+function clearSessionInfo() {
+  sessionStorage.clear();
 }
 
 function refreshSessionInfo() {
@@ -103,9 +109,11 @@ async function handleBmiSubmit(event) {
   const sessionInfo = getSessionInfo();
   if (sessionInfo && sessionInfo.loggedIn) {
     updateUserDataToBackend(state, sessionInfo.email);
+    navigateTo("/diet-plan.html");
   } else {
     updateSessionInfo(state);
+    navigateTo("/diet-plan.html");
   }
-
-  navigateTo("/diet-plan.html");
 }
+
+refreshSessionInfo();

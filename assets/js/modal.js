@@ -19,8 +19,13 @@ function resetUserForm() {
 }
 
 function openModal(event) {
-  const targetModalId = event.target.dataset.target;
-  makeElementVisible(targetModalId);
+  if (event.target.innerHTML === "Logout") {
+    clearSessionInfo();
+    navigateTo();
+  } else {
+    const targetModalId = event.target.dataset.target;
+    makeElementVisible(targetModalId);
+  }
 }
 
 function closeModal() {

@@ -21,3 +21,4 @@ function setupStats() {
 }
 
 setupStats();
+refreshSessionInfo();
